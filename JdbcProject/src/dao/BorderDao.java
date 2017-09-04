@@ -10,12 +10,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
+import Util.TransferExcel;
 import dto.Borders;
 
 public class BorderDao {
 	private FactoryUser factory = FactoryUser.getInstance();
 	private static BorderDao instance = new BorderDao();
-
+	TransferExcel te = new TransferExcel();
 	public static BorderDao getInstance() {
 		return instance;
 	}
@@ -95,15 +96,23 @@ public class BorderDao {
 		Connection conn2 =null;
 		PreparedStatement pstmt2 = null;
 		String sql = " SELECT * FROM BORDERS where bord_index= ? ";
+		String countUpdate="update borders set bord_count=? where bord_index=?";
 		try {
 			conn = factory.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, index_num);
 			rs = pstmt.executeQuery();
-			rs.next();
-			return new Borders(rs.getString("user_id"), rs.getInt("bord_index"), 
-					rs.getString("bord_head"), rs.getString("bord_body"), 
-					rs.getInt("bord_count"),rs.getString("bord_date"));
+			if(rs.next()) {
+				conn2 = factory.getConnection();
+				pstmt2 = conn.prepareStatement(countUpdate);
+				pstmt2.setInt(1, rs.getInt("bord_count")+1);
+				pstmt2.setInt(2, index_num);
+				pstmt2.executeUpdate();
+				return new Borders(rs.getString("user_id"), rs.getInt("bord_index"), 
+						rs.getString("bord_head"), rs.getString("bord_body"), 
+						rs.getInt("bord_count")+1,rs.getString("bord_date"));
+			}
+			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 
@@ -143,6 +152,7 @@ public class BorderDao {
 		Connection conn2 =null;
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
+		delete_pwd = te.getEncrypt(delete_pwd);
 		String sql = " SELECT USERS.USER_PWD FROM BORDERS,USERS "
 				+ "WHERE USERS.USER_ID = BORDERS.USER_ID "
 				+ "AND BORDERS.BORD_INDEX=? ";
@@ -154,7 +164,6 @@ public class BorderDao {
 			rs = pstmt.executeQuery();
 			rs.next();
 			String str = rs.getString("USER_PWD");
-			System.out.println(str);
 			if(str.equals(delete_pwd)){
 				conn2 = factory.getConnection();
 				pstmt2 = conn2.prepareStatement(deletesql);

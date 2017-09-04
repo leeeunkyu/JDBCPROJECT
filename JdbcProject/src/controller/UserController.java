@@ -19,6 +19,9 @@ public class UserController {
 	public String selectID(String username) {
 		return service.userSelectID(username);
 	}
+	public boolean deleteUser(String deleteid, String deletepwd) {
+		return service.userDelete(deleteid,deletepwd);
+	}
 	
 
 }

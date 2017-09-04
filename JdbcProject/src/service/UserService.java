@@ -19,5 +19,8 @@ public class UserService {
 	public String userSelectID(String username) {
 		return dao.selectID(username);
 	}
+	public boolean userDelete(String deleteid, String deletepwd) {
+		return dao.deleteUser(deleteid,deletepwd);
+	}
 
 }

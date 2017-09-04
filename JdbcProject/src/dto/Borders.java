@@ -13,7 +13,6 @@ public class Borders {
 		builder.append("조회수:"+bord_count);
 		builder.append("  ");
 		builder.append("작성일:"+bord_date);
-		builder.append("\n");
 		return builder.toString();
 	}
 

@@ -23,14 +23,12 @@ public class BorderController {
 	}
 	public Borders selectOne(int index_num) {
 		return service.selectOne(index_num);
-		// TODO Auto-generated method stub
-		
+				
 	}
 	public ArrayList <Borders> selectUserBord(String userid) {
 		return service.selectUserBord(userid);		
 	}
 	public boolean deleteOne(int delete_num, String delete_pwd) {
-		// TODO Auto-generated method stub
 		return service.deleteOne(delete_num,delete_pwd);
 	}
 
