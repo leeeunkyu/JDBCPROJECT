@@ -1,5 +1,10 @@
 package dto;
 
+/**
+ * 사용자를 정의할 유저 테이블
+ * @author kosta
+ *
+ */
 public class Users {
 	private String user_id;
 	private String user_pwd;

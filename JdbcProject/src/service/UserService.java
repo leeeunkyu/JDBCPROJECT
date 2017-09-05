@@ -22,5 +22,11 @@ public class UserService {
 	public boolean userDelete(String deleteid, String deletepwd) {
 		return dao.deleteUser(deleteid,deletepwd);
 	}
+	public boolean userSelectPWD(String userid, String username) {
+		return dao.selectUserPWD(userid,username);
+	}
+	public boolean userModifyPWD(String userid, String modipwd) {
+		return dao.modifyUserPWD(userid,modipwd);
+	}
 
 }

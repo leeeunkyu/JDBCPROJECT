@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import dto.Comments;
 import dto.Logs;
 
+/**
+ * 코맨트 db접근을 위한 코맨트 dao클래스
+ * @author kosta
+ *
+ */
 public class CommentDao {
 	private static CommentDao instance = new CommentDao();
 	private FactoryUser factory = FactoryUser.getInstance();

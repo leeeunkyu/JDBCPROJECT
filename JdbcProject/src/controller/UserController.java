@@ -22,6 +22,12 @@ public class UserController {
 	public boolean deleteUser(String deleteid, String deletepwd) {
 		return service.userDelete(deleteid,deletepwd);
 	}
+	public boolean selectPWD(String userid, String username) {
+		return service.userSelectPWD(userid,username);
+	}
+	public boolean modifyPWD(String userid, String modipwd) {
+		return service.userModifyPWD(userid,modipwd);
+	}
 	
 
 }

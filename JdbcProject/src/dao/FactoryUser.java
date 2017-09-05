@@ -7,6 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+/**
+ * dao 구조정규화를 위한 factory유저 클래스
+ * @author kosta
+ *
+ */
 public class FactoryUser {
 	private static FactoryUser instance = new FactoryUser();
 	/**DB 드라이버 정보*/

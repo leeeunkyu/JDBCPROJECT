@@ -5,7 +5,11 @@ import java.util.Scanner;
 
 import controller.LogController;
 import dto.Logs;
-
+/**
+ * 사용자 로그를 보여주기위한 view페이지
+ * @author kosta
+ *
+ */
 public class LogView {
 	Scanner scan;
 	LogController lcontrl;
@@ -18,7 +22,9 @@ public class LogView {
 		scan = new Scanner(System.in);
 		this.userid = userid;
 	}
-
+	/**
+	 * 로그 기록을 보기위한 메뉴
+	 */
 	public void LogMenu() {
 		int num = 0;
 		System.out.println("------------로그화면-----------");
@@ -36,6 +42,9 @@ public class LogView {
 			break;
 		}
 	}
+	/**
+	 * 보여지는 로그 기록들
+	 */
 	public void report() {
 		ArrayList<Logs> al = new ArrayList<Logs>();
 		al=lcontrl.selectLog(userid);

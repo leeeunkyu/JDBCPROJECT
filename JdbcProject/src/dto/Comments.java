@@ -1,5 +1,10 @@
 package dto;
 
+/**
+ * 사용자 댓글을 정의할 코맨트 테이블
+ * @author kosta
+ *
+ */
 public class Comments {
 	private String userId;
 	private int bordIndex;

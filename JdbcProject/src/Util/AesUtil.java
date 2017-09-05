@@ -22,6 +22,11 @@ import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 
+/**
+ * 암호화에 필요한 aes알고리즘을 위한 클래스
+ * @author kosta
+ *
+ */
 public class AesUtil {
 	
         private final int keySize;

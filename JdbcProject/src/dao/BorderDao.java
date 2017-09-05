@@ -13,6 +13,11 @@ import java.util.Locale;
 import Util.TransferExcel;
 import dto.Borders;
 
+/**
+ * 게시판 db에 접근하기위한 게시판 dao클래스
+ * @author kosta
+ *
+ */
 public class BorderDao {
 	private FactoryUser factory = FactoryUser.getInstance();
 	private static BorderDao instance = new BorderDao();
@@ -79,8 +84,9 @@ public class BorderDao {
 			conn = factory.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			rs.next();
-			return rs.getInt("bord_index")+1;
+			if (rs.next()) {
+				return rs.getInt("bord_index")+1;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 
@@ -162,14 +168,15 @@ public class BorderDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, delete_num);
 			rs = pstmt.executeQuery();
-			rs.next();
-			String str = rs.getString("USER_PWD");
-			if(str.equals(delete_pwd)){
-				conn2 = factory.getConnection();
-				pstmt2 = conn2.prepareStatement(deletesql);
-				pstmt2.setInt(1,delete_num);
-				pstmt2.executeUpdate();
-				return true;
+			if(rs.next()) {
+				String str = rs.getString("USER_PWD");
+				if(str.equals(delete_pwd)){
+					conn2 = factory.getConnection();
+					pstmt2 = conn2.prepareStatement(deletesql);
+					pstmt2.setInt(1,delete_num);
+					pstmt2.executeUpdate();
+					return true;
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

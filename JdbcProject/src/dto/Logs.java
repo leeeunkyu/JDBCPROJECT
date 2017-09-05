@@ -1,14 +1,19 @@
 package dto;
 
+/**
+ * 사용자 로그를 정의할 로그테이블 
+ * @author kosta
+ *
+ */
 public class Logs {
-
+	
 	String user_id;
 	String user_history;
 	String permission;
 	
 	public Logs() {
-		// TODO Auto-generated constructor stub
 	}
+	
 	public Logs(String user_id, String user_history, String permission) {
 		this.user_id = user_id;
 		this.user_history = user_history;

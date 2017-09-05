@@ -11,6 +11,11 @@ import java.util.regex.Pattern;
 import controller.BorderController;
 import dto.Borders;
 
+/**
+ * 사용자가 정상적으로 로그인이 되었을경우 보이는 view 페이지
+ * @author kosta
+ *
+ */
 public class LoginView {
 	Scanner bscan;
 	String userid;
@@ -22,12 +27,19 @@ public class LoginView {
 	public LoginView() {
 		
 	}
+	/**
+	 * 로그인 페이지를 위한 초기 설정
+	 * @param userid 로그인에 성공한 사용자 아이디
+	 */
 	public LoginView(String userid) {
 		bscan = new Scanner(System.in);
 		bcontrol = new BorderController();
 		lv = new LogView(userid);
 		this.userid = userid;
 	}
+	/**
+	 * 로그인 페이지에서 게시판을 사용하기 위한 메뉴
+	 */
 	public void BorderMenu() {
 		String num = null;
 		String pattern="^[1-7]+";
@@ -39,7 +51,7 @@ public class LoginView {
 		System.out.println("4.내가 작성한 게시물 보기");
 		System.out.println("5.내가 작성한 게시물 삭제");		
 		System.out.println("6.로그 보기");
-		System.out.println("7.뒤로가기 ");
+		System.out.println("7.로그아웃 ");
 		System.out.println("-------------------------------");
 		num = bscan.next();
 		if (Pattern.matches(pattern,num)) {
@@ -53,6 +65,11 @@ public class LoginView {
 		int index=bcontrol.selectIndex();
 		return index;
 	}
+	
+	/**
+	 * 게시판 메뉴에서 선택한 값에 따라서 게시판 기능 사용
+	 * @param num 게시판 메뉴에서 선택한 값
+	 */
 	public void choiceBorder(int num) {
 		String head = null;
 		String body = null;
@@ -130,6 +147,8 @@ public class LoginView {
 			BorderMenu();
 			break;
 		case 7:
+			System.out.println("정상적으로 로그아웃이 되었습니다.");
+			
 			break;
 		default:
 			break;

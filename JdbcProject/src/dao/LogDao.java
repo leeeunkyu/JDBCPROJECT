@@ -8,6 +8,11 @@ import java.util.ArrayList;
 
 import dto.Logs;
 
+/**
+ * log db에 들어가기 위한 logdao클래스 
+ * @author kosta
+ *
+ */
 public class LogDao {
 	private FactoryUser factory = FactoryUser.getInstance();
 	private static LogDao instance = new LogDao();
